@@ -1,0 +1,29 @@
+<div class="my-2 pt-3">
+    {{#backurl}}
+        <a href="{{backurl}}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> {{backurlstring}}</a>
+    {{/backurl}}
+    {{#editurl}}
+        <a href="{{editurl}}" class="btn btn-success"><i class="fa fa-pencil"></i> {{#str}}
+            view:eportfolio:button:edit, local_eportfolio{{/str}}</a>
+    {{/editurl}}
+</div>
+
+<hr/>
+
+<div class="row">
+    <div class="col">
+        {{#userfullname}}
+            <p class="font-weight-bold">{{#str}}view:eportfolio:sharedby, local_eportfolio{{/str}}: {{userfullname}} </p>
+        {{/userfullname}}
+        <p class="font-weight-light">{{#str}}view:eportfolio:timecreated, local_eportfolio{{/str}}: {{timecreated}} |
+            {{#str}}view:eportfolio:timemodified, local_eportfolio{{/str}}: {{timemodified}}</p>
+    </div>
+</div>
+
+<div class="row pt-3">
+    <div class="col-8">
+
+        {{{h5pplayer}}}
+
+    </div>
+</div>

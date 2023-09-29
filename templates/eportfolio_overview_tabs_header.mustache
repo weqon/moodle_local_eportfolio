@@ -1,0 +1,45 @@
+<div class="dropdown mt-3">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+        {{#str}}overview:eportfolio:fileselect, local_eportfolio{{/str}}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{{uploadh5pfile}}">{{#str}}overview:eportfolio:uploadnewfile, local_eportfolio{{/str}}</a>
+        <a class="dropdown-item" href="{{createh5pfile}}">{{#str}}overview:eportfolio:createnewfile, local_eportfolio{{/str}}</a>
+    </div>
+</div>
+
+<ul class="nav nav-tabs mt-5 mb-5" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home" type="button"
+                role="tab" aria-controls="home" aria-selected="true">{{#str}}overview:tab:myeportfolios, local_eportfolio{{/str}}
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="myshared-tab" data-toggle="tab" data-target="#myshared" type="button"
+                role="tab" aria-controls="myshared" aria-selected="false">{{#str}}overview:tab:mysharedeportfolios, local_eportfolio{{/str}}
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="mygrade-tab" data-toggle="tab" data-target="#mygrade" type="button"
+                role="tab" aria-controls="mygrade" aria-selected="false">{{#str}}overview:tab:mysharedeportfoliosgrade, local_eportfolio{{/str}}
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="shared-tab" data-toggle="tab" data-target="#shared" type="button"
+                role="tab" aria-controls="shared" aria-selected="false">{{#str}}overview:tab:sharedeportfolios, local_eportfolio{{/str}}
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="grade-tab" data-toggle="tab" data-target="#grade" type="button"
+                role="tab" aria-controls="grade" aria-selected="false">{{#str}}overview:tab:sharedeportfoliosgrade, local_eportfolio{{/str}}
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="template-tab" data-toggle="tab" data-target="#template" type="button"
+                role="tab" aria-controls="template" aria-selected="false">{{#str}}overview:tab:sharedtemplates, local_eportfolio{{/str}}
+        </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">

@@ -1,0 +1,28 @@
+<div class="mx-auto" style="max-width: 960px;">
+    <h2>{{#str}}contenteditor, local_eportfolio{{/str}}</h2>
+    <div class="mx-auto mt-3">
+        <div class="btn-group mr-1" role="group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-action="{{name}}-content"
+                    aria-haspopup="true" aria-expanded="false" {{^libraries}}title="{{#str}}nocontenttypes, core_contentbank{{/str}}"
+                    disabled{{/libraries}}>
+                {{#str}}create:library, local_eportfolio{{/str}}
+            </button>
+            <div class="dropdown-menu dropdown-scrollable dropdown-menu-right" style="max-height: 320px; overflow-x: hidden;">
+                <h6 class="dropdown-header">{{#str}}h5plibraries, local_eportfolio{{/str}}</h6>
+                {{#libraries}}
+                    <a class="dropdown-item icon-size-4" href="{{{ baseurl }}}?{{{ typeeditorparams }}}">
+                        {{#typeicon}}
+                            <img alt="" class="icon" src="{{{ typeicon }}}">
+                        {{/typeicon}}
+                        {{^typeicon}}
+                            {{#pix}} b/h5p_library, core {{/pix}}
+                        {{/typeicon}} {{ typename }}
+                    </a>
+                {{/libraries}}
+            </div>
+        </div>
+        <a href="{{backurl}}" class="btn btn-secondary">
+            {{#str}}back{{/str}}
+        </a>
+    </div>
+</div>
