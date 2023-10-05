@@ -204,7 +204,6 @@ class sharing_form_2 extends moodleform {
         $mform->hideIf('enrolled', 'fullcourse', 'eq', '1');
         $mform->hideIf('groups', 'fullcourse', 'eq', '1');
 
-        $mform->disabledIf('fullcourse', 'shareoption', 'eq', 'grade');
         $mform->hideIf('shareend', 'shareoption', 'eq', 'grade');
 
         // Add standard buttons.
