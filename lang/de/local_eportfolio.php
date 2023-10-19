@@ -101,6 +101,7 @@ $string['view:eportfolio:timemodified'] = 'Aktualisiert am';
 // Sharing.
 $string['sharing:header'] = 'ePortfolio teilen';
 $string['sharing:form:step:courseselection'] = 'Kurs auswählen';
+$string['sharing:form:step:hint'] = 'Bitte einen Kurs auswählen';
 $string['sharing:form:step:additionalinfo'] = 'Weitere Einstellungen';
 $string['sharing:form:step:confirm'] = 'ePortfolio teilen';
 $string['sharing:form:courseselection'] = 'Kurs zum Teilen auswählen';
