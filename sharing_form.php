@@ -54,9 +54,15 @@ class sharing_form_1 extends moodleform {
         $searchcourses = get_eportfolio_courses();
         $courses = array();
 
-        foreach ($searchcourses as $sco) {
-            $course = $DB->get_record('course', ['id' => $sco]);
-            $courses[$course->id] = $course->fullname . "<br>";
+        if ($searchcourses) {
+            foreach ($searchcourses as $sco) {
+                $course = $DB->get_record('course', ['id' => $sco]);
+                $courses[$course->id] = $course->fullname . "<br>";
+            }
+        } else {
+            redirect(new moodle_url('index.php'),
+                    get_string('sharing:form:step:nocourseselection', 'local_eportfolio'),
+                    null, \core\output\notification::NOTIFY_ERROR);
         }
 
         $options = array(

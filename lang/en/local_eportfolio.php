@@ -98,8 +98,9 @@ $string['view:eportfolio:timemodified'] = 'Last modified';
 
 // Sharing.
 $string['sharing:header'] = 'Share ePortfolio';
+$string['sharing:form:step:nocourseselection'] = 'Currently there is no course available to share your ePortfolio.';
 $string['sharing:form:step:courseselection'] = 'Select course';
-$string['sharing:form:step:hint'] = 'Please select a course';
+$string['sharing:form:select:hint'] = 'Please select a course';
 $string['sharing:form:step:additionalinfo'] = 'Additional settings';
 $string['sharing:form:step:confirm'] = 'Share ePortfolio';
 $string['sharing:form:courseselection'] = 'Select a course to share';
