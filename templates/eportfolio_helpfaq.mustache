@@ -1,0 +1,312 @@
+<div class="my-2">
+    <a href="{{backurl}}" class="btn btn-primary mt-5"><i class="fa fa-arrow-circle-left"></i> {{backurlstring}}</a>
+</div>
+
+<hr/>
+
+<div class="row pt-3">
+    <div class="col-8">
+
+        <h4>Allgemein</h4>
+        <p>
+            Das „ePortfolio“ stellt in Moodle eine Möglichkeit zur Verfügung, eigene erstellte Inhalte mit H5P anderen Teilnehmer/innen zur Verfügung zu stellen. Die H5P-Inhalte
+            können direkt über das Plugin erstellt oder bereits bestehende Inhaltstypen über ein Formular hochgeladen werden.
+            Aktuell können die Inhalte zur Ansicht und zur Bewertung durch die Teilnehmer/innen geteilt werden. Die Rolle „Trainer/in“ hat zusätzlich die Option, H5P-Inhalte als
+            „Vorlage“ zur Verfügung zu stellen.
+            Ergänzend zu dem lokalen Plugin „ePortfolio“ stehen ergänzend ein Block und eine Aktivität zur Verfügung.
+        </p>
+
+        <ul>
+            <li>
+                Block „ePortfolio“<br/>
+                Kann im Kurs ergänzend eingebunden werden. Über den Block werden die in dem Kurs geteilten ePortfolios ausgegeben.
+            </li>
+            <li>
+                Aktivität „ePortfolio“<br/>
+                Kann im Kurs ergänzend eingebunden werden. Über die Aktivität können die in dem Kurs „zur Bewertung“ geteilten ePortfolios eingesehen und durch die Rolle
+                „Trainer/in“ bewertet werden
+            </li>
+        </ul>
+
+        <hr/>
+
+        <h4>Lokales Plugin "ePortfolio"</h4>
+        <p>
+            Mit dem lokalen Plugin „ePortfolio“ wird die Kernfunktionalität bereitgestellt. Das „ePortfolio“ liegt im „User-Context“ und ist somit personenbezogen und die darin abgelegten Inhalte sind zunächst nur für die/den angemeldete/n Nutzer/in einsehbar.<br/><br/>
+            Die Übersichtsseite kann über die Hauptnavigation in Moodle mit Klick auf „ePortfolio“ aufgerufen werden.
+        </p>
+        <img src="pix/uebersichtsseite_eportfolio.png" alt="Übersichtsseite ePortfolio" class="img-fluid mt-5 mb-5"/>
+
+        <h5 class="mt-5">Aufbau der Übersichtsseite</h5>
+        <p>
+            Die Übersichtsseite gliedert sich wie folgt:
+        </p>
+        <ul>
+            <li>
+                Meine ePortfolios
+                <ul>
+                    <li>
+                        In diesem Bereich liegen alle von den Nutzer/innen hochgeladenen bzw. über den H5P-Editor angelegten ePortfolios.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Von mir geteilte ePortfolios
+                <ul>
+                    <li>
+                        In diesem Bereich liegen alle von den Nutzer/innen „zur Ansicht“ geteilten ePortfolios.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Von mir zur Bewertung geteilte ePortfolios
+                <ul>
+                    <li>
+                        In diesem Bereich liegen alle von den Nutzer/innen „zur Bewertung“ geteilten ePortfolios.<br/>
+                        Hinweis: Zur Bewertung kann nur geteilt werden, wenn die Aktivität „ePortfolio“ in dem Kurs angelegt und zugänglich ist.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Mit mir geteilte ePortfolios
+                <ul>
+                    <li>
+                        In diesem Bereich liegen alle ePortfolios, die mit der/dem Nutzer/in zur Ansicht geteilt wurden.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Mit mir zur Bewertung geteilte ePortfolios
+                <ul>
+                    <li>
+                        In diesem Bereich liegen alle ePortfolios, die mit der/dem Nutzer/in zur Bewertung geteilt wurden.<br/>
+                        Hinweis: Die/der Nutzer/in muss in der Rolle „Trainer/in“ in einem „ePortfolio-Kurs“ eingetragen sein und die Aktivität „ePortfolio“ muss in dem Kurs angelegt und zugänglich sein.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                ePortfolio Vorlagen
+                <ul>
+                    <li>In diesem Bereich liegen alle ePortfolios, die mit der/dem Nutzer/in als Vorlage geteilt wurden.<br/>
+                        Hinweis: Vorlagen können nur durch die Rolle „Trainer/in“ zur verfügung gestellt werden.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <h5 class="mt-5">Funktionen</h5>
+        <p>
+            In den Ansichten stehen folgende Funktionen (Aktion) zur Verfügung.<br/><br/>
+            <b>Für die Rollen "Authentifizierte/r Nutzer/in" bzw. "Teilnehmer/in":</b>
+        </p>
+        <ul>
+            <li>
+                Vor dem Dateiname kann über eine Checkbox eine oder mehrere Dateien zum Download ausgewählt werden.
+            </li>
+            <li>
+                <i class="fa fa-share-alt mr-2"></i>
+                Öffnet das Formular zum Teilen des ePortfolios.
+            </li>
+            <li>
+                <i class="fa fa-edit mr-2"></i>
+                Öffnet den H5P-Editor, um den Inhalt zu bearbeiten.
+            </li>
+            <li>
+                <i class="fa fa-trash mr-2"></i>
+                Löscht die ausgewählte Datei und, sofern eine aktive Teilung besteht, die Teilung wird zurück gezogen. Das Löschen der Datei muss gesondert bestätigt werden.
+                Zur Bewertung geteilte ePortfolios werden nur auf Nutzer/innen-Ebene gelöscht. Die eingereichte Datei zur Bewertung bleibt im Kurs bestehen
+            </li>
+            <li>
+                <i class="fa fa-search mr-2"></i>
+                Öffnet den H5P-Inhalt zur Ansicht.
+            </li>
+            <li>
+                <i class="fa fa-table mr-2"></i>
+                Öffnet die Bewertung in der Aktivität "ePortfolio" im Kurs, für den die Bewertung eingereicht wurde.
+            </li>
+            <li>
+                <i class="fa fa-undo mr-2"></i>
+                Die aktive Teilung wird zurück gezogen. Das Zurückziehen der Teilung muss bestätigt werden, bevor diese wirksam wird.
+                Zur Bewertung geteilte ePortfolios können nicht zurück gezogen werden.
+            </li>
+        </ul>
+        <p>
+            <b>Für die Rolle "Trainer/in":</b>
+        </p>
+        <ul>
+            <li>
+                <i class="fa fa-table mr-2"></i>
+                Öffnet die Bewertungsübersicht für die Rolle „Trainer/in“
+            </li>
+            <li>
+                <i class="fa fa-info-circle mr-2"></i>
+                Wird ein ePortfolio als „Vorlage“ geteilt, wird für die Rolle „Trainer/in“ eine
+                Information hinter dem Dateinamen ausgegeben.
+            </li>
+        </ul>
+
+        <h5 class="mt-5">Neue Inhalte hinzufügen</h5>
+        <p>
+            Über die Auswahl „Dateiauswahl“ können neue H5P-Inhalte im ePortfolio angelegt werden.
+        </p>
+        <img src="pix/dateiauswahl_eportfolio.png" alt="ePortfolio Dateiauswahl" class="img-fluid mt-5 mb-5"/>
+
+        <h6>H5P-Datei hochladen</h6>
+        <p>
+            Bestehende H5P-Dateien können über das Formular hochgeladen werden. Aktuell werden nur .h5p-Dateien akzeptiert. Nach dem Upload öffnet sich der H5P-Editor.
+        </p>
+        <img src="pix/h5p_datei_hochladen.png" alt="H5P-Datei hochladen" class="img-fluid mt-5 mb-5"/>
+        <img src="pix/h5p_editor.png" alt="H5P-Editor" class="img-fluid mt-5 mb-5"/>
+
+        <h6>H5P-Datei anlegen</h6>
+        <p>
+            Im ersten Schritt öffnet sich die „Auswahl Bibliothek“, worüber der gewünschte H5P-Inhaltstyp (u. A. Portfolio) ausgewählt werden kann. Nach
+            Auswahl eines Inhaltstyps öffnet sich der H5P-Editor
+        </p>
+        <img src="pix/h5p_datei_anlegen.png" alt="Neue H5P-Datei anlegen" class="img-fluid mt-5 mb-5"/>
+
+        <h5 class="mt-5">Bestehenden Kurs als ePortfolio-Kurs markieren</h5>
+        <p>
+            Aktuell können ePortfolios nur innerhalb von Kursen geteilt werden. Damit die Teilung möglich ist, muss der entsprechende Kurs für die ePortfolios freigegeben werden.
+            Dies kann im Kurs über die Einstellungen vorgenommen werden in dem Abschnitt "ePortfolio". Die Option wird bei der Installation des Plugins automatisch hinzugefügt.
+        </p>
+        <img src="pix/eportfolio_kurs_markieren.png" alt="ePortfolio Kurs einstellen" class="img-fluid mt-5 mb-5"/>
+
+        <h5 class="mt-5">ePortfolios teilen</h5>
+        <p>
+            Mit Klick auf das „Teilen“-Icon öffnet sich das Formular, um die ausgewählte Datei zu teilen. Eine Voraussetzung ist, dass mind. ein Kurs über die „Kurs-Einstellungen“
+            als „ePortfolio“ Kurs markiert ist und die/der Nutzer/in mind. in der Rolle „Teilnehmer/in“ aktiv in dem Kurs eingeschrieben ist.<br/><br/>
+            Im ersten Schritt wird der Kurs ausgewählt, mit dem das ePortfolio geteilt werden soll.
+        </p>
+        <img src="pix/kurs_auswahl_teilung.png" alt="ePortfolio Kurs zum Teilen auswählen" class="img-fluid mt-5 mb-5"/>
+        <p>
+            Im zweiten Schritt wird die Art der Teilung/Typ ausgewählt:
+        </p>
+        <ul>
+            <li>Zur Ansicht</li>
+            <li>Zur Bewertung</li>
+            <li>Als Vorlage</li>
+        </ul>
+        <p class="alert alert-warning font-weight-bold">
+            Hinweis: Der Eintrag „Zur Bewertung“ steht nur zur Verfügung, wenn im Kurs die Aktivität „ePortfolio“ angelegt und verfügbar ist und der Eintrag „Als Vorlage“ steht nur
+            der Rolle „Trainer/in“ zur Verfügung.
+        </p>
+        <p>Optional kann über „Verfügbar bis“ ein Datum eingestellt werden. Nach erreichen des Datums kann die Datei nicht mehr durch andere Nutzer/innen angeschaut
+            werden.<br/><br/>
+            Im Bereich „ePortfolio für den gesamten Kurs oder ausgewählte Teilnehmende freigeben“ können die Nutzer/innen auswählen, mit dem die ausgewählte Datei geteilt werden
+            soll:
+        </p>
+        <ul>
+            <li>
+                Teilen mit „alle im Kurs“<br/>
+                Die Ansicht ist für alle aktiv eingeschriebene „Teilnehmer/innen“ verfügbar
+            </li>
+            <li>
+                Teilen mit „ausgewählte Teilnehmende“
+                <ul>
+                    <li>Auswahl Kurs-Rolle</li>
+                    <li>Teilnehmer/innen einzeln auswählen (namentlich aufgelistet)</li>
+                    <li>Kurs-Gruppen (wenn verfügbar im Kurs)</li>
+                </ul>
+            </li>
+        </ul>
+        <img src="pix/kurs_teilnehmende_auswahl.png" alt="ePortfolio Teilnehmende auswählen" class="img-fluid mt-5 mb-5"/>
+        <p>
+            Mit Klick auf „Änderungen speichern“ erfolgt die Teilung und alle Teilnehmenden erhalten eine Benachrichtigung über die Teilung.
+        </p>
+
+        <h5 class="mt-5">Benachrichtigungen</h5>
+        <p>Die Teilnehmer/innen werden über das Moodle-interne Mitteilungssystem über die erfolgte Teilung informiert.<br/><br/>
+            Über die Profil-Einstellungen können die Benachrichtigungen konfiguriert werden. Standardmäßig sind „E-Mail“ und „Web“ aktiviert.
+        </p>
+        <img src="pix/benachrichtigungen_konfigurieren_bewertung.png" alt="Benachrichtigungen konfigurieren Bewertung" class="img-fluid mt-5 mb-5"/>
+        <img src="pix/benachrichtigungen_konfigurieren_teilung.png" alt="Benachrichtigungen konfigurieren Teilung" class="img-fluid mt-5 mb-5"/>
+        <p>
+            Bei der Variante „Web“ können die Mitteilungen über die „Glocke“ oben rechts in der Benutzernavigation aufgerufen werden.
+        </p>
+        <img src="pix/benachrichtigungen.png" alt="Benachrichtigungen" class="img-fluid mt-5 mb-5"/>
+
+        <hr/>
+
+        <h4>Block Plugin "ePortfolio"</h4>
+        <p>
+            Der Block „ePortfolio“ kann ergänzend zu dem lokalen Plugin „ePortfolio“ installiert und verwendet werden. Die Kernfunktionalität für den Block wird über das lokale
+            Plugin bereitgestellt und der Block dient lediglich zur Ausgabe der geteilten ePortfolios.<br/><br/>
+            Sofern die Aktivität „ePortfolio“ im Kurs angelegt und verfügbar ist, kann aus dem Block heraus direkt in die Bewertung abgesprungen werden. Ist die Aktivität nicht
+            verfügbar, werden die Nutzer/innen in die Ansicht weitergeleitet.
+
+        </p>
+        <img src="pix/block_eportfolio.png" alt="Block ePortfolio im Kurs" class="img-fluid mt-5 mb-5"/>
+        <p class="alert alert-warning font-weight-bold">
+            Hinweis: Der Block erfordert das lokale Plugin „ePortfolio“. Alleinstehend kann dieses Plugin nicht verwendet werden.
+        </p>
+
+        <hr/>
+
+        <h4>Aktivität Plugin "ePortfolio"</h4>
+        <p>
+            Die Aktivität „ePortfolio“ kann ergänzend zu dem lokalen Plugin „ePortfolio“ installiert und verwendet werden. In der Aktivität werden alle für den Kurs „zur Bewertung“
+            geteilten ePortfolios aufgelistet. Die Rolle „Trainer/in“ kann zu jedem ePortfolio eine Bewertung hinterlegen.
+        </p>
+        <img src="pix/bewertung_eportfolio.png" alt="Aktivität Bewertung durchführen" class="img-fluid mt-5 mb-5"/>
+        <p class="alert alert-warning font-weight-bold">
+            Hinweis: Die Aktivität erfordert das lokale Plugin „ePortfolio“. Alleinstehend kann dieses Plugin nicht verwendet werden.
+        </p>
+
+        <h5 class="mt-5">Bewertung durchführen</h5>
+        <p>
+            Mit Klick auf den Button „Bewerten“ öffnet sich das Formular zur Bewertung. Im linken Bereich wird das ePortfolio ausgegeben und rechts daneben wird das Formular für
+            die Bewertung angezeigt.
+        </p>
+        <img src="pix/bewertung.png" alt="Bewertung" class="img-fluid mt-5 mb-5"/>
+        <p>
+            Mit Klick auf „Änderungen speichern“ wird die Bewertung hinterlegt und kann durch die Teilnehmer/innen sowohl in der Übersicht unter „Von mir zur Bewertung geteilte
+            ePortfolios“ oder über die Aktivität im Kurs eingesehen werden.
+        </p>
+
+        <h5 class="mt-5">Besonderheiten</h5>
+        <p>
+            Folgende Besonderheiten gilt es bei der Verwendung der Aktivität zu beachten:
+        </p>
+        <ul>
+            <li>
+                Zur Bewertung geteilte ePortfolios können ausschließlich durch die Rolle „Trainer/in“ gelöscht werden. Wenn Nutzer/innen die eingereichte Datei in ihrem
+                persönlichen Bereich löschen, hat das keine Auswirkung auf die Einreichung/zur Bewertung geteilt.
+            </li>
+            <li>
+                Wird die Aktivität aus dem Kurs gelöscht, werden alle darüber Eingereichten, also zur Bewertung geteilten Dateien, gelöscht.
+            </li>
+            <li>
+                Die Aktivität „ePortfolio“ kann je Kurs nur einmal angelegt werden. Wird die Aktivität gelöscht, kann diese u. U. nicht unmittelbar neu angelegt werden.
+                Sofern Sie in Ihrem Moodle den „Papierkorb“ verwenden, sollten Sie zunächst prüfen, ob die Instanz der Aktivität dorthin verschoben wurde und diese ggf. über den
+                Papierkorb manuell löschen.
+                Des Weiteren kann sich das Löschen verzögern. Dies ist der Moodle-internen Routine geschuldet, dass die Kursdaten (Modul-Instanzen) über einen AdHoc-Task bereinigt
+                werden. Dieser hängt an der Ausführung des Cronjobs.
+            </li>
+        </ul>
+
+        <hr/>
+
+        <h4>Bekannte Fehler</h4>
+
+        <h5 class="mt-5">Fehlerhafte URL - Sie können die Datei nicht bearbeiten</h5>
+
+        <p>
+            Wird eine H5P-Datei hochgeladen und der Inhaltstyp ist in Moodle noch unbekannt, erscheint folgende Fehlermeldung nach dem Speichern des Upload-Formulars:
+        </p>
+        <img src="pix/fehler_h5p_inhaltstypen.png" alt="Fehlerhafte URL" class="img-fluid mt-5 mb-5"/>
+        <p>
+            <b>Fehlerbehebung:</b><br/>
+            Durch eine/n Moodle Website-Administrator/in muss der Cronjob zur Synchronisation der H5P Inhaltstypen ausgeführt werden (/admin/tool/task/scheduledtasks.php):
+        </p>
+        <img src="pix/fehler_h5p_inhaltstypen_cronjob.png" alt="Ausführung Cronjob" class="img-fluid mt-5 mb-5"/>
+
+
+    </div>
+</div>
+
+<hr/>
+
+<div class="my-2">
+    <a href="{{backurl}}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> {{backurlstring}}</a>
+</div>

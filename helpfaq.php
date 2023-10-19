@@ -34,7 +34,6 @@ $context = context_user::instance($USER->id);
 
 // Set page layout.
 $PAGE->set_url($url);
-$PAGE->set_context($context);
 $PAGE->set_title(get_string('helpfaq:header', 'local_eportfolio'));
 $PAGE->set_heading(get_string('helpfaq:header', 'local_eportfolio'));
 $PAGE->set_pagelayout('base');
@@ -44,10 +43,11 @@ $PAGE->set_pagetype('user-files');
 // Print the header.
 echo $OUTPUT->header();
 
-echo '<a href="' . $overviewurl . '" class="btn btn-primary mt-3"><i class="fa fa-arrow-circle-left"></i> Zurück zur Übersicht</a>';
+$data = new stdClass();
 
-echo '<div class="alert alert-info mt-3">';
-echo '<p>In Kürze ist hier die Hilfe und der FAQ-Bereich verfügbar!</p>';
-echo '</div>';
+$data->backurl = new moodle_url('/local/eportfolio/index.php');
+$data->backurlstring = get_string('view:eportfolio:button:backtoeportfolio', 'local_eportfolio');
+
+echo $OUTPUT->render_from_template('local_eportfolio/eportfolio_helpfaq', $data);
 
 echo $OUTPUT->footer();
