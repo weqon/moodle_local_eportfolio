@@ -28,6 +28,12 @@ require_once('../../config.php');
 // First check, if user is logged in before accessing this page.
 require_login();
 
+if (isguestuser()) {
+    redirect(new moodle_url($CFG->wwwroot),
+            get_string('error:noguestaccess', 'local_eportfolio'),
+            null, \core\output\notification::NOTIFY_ERROR);
+}
+
 $url = new moodle_url('/local/eportfolio/index.php');
 $overviewurl = new moodle_url('/local/eportfolio/index.php');
 $context = context_user::instance($USER->id);

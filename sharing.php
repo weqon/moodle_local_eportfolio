@@ -35,6 +35,12 @@ require_once($CFG->dirroot . '/mod/h5pactivity/lib.php');
 // First check, if user is logged in before accessing this page.
 require_login();
 
+if (isguestuser()) {
+    redirect(new moodle_url($CFG->wwwroot),
+            get_string('error:noguestaccess', 'local_eportfolio'),
+            null, \core\output\notification::NOTIFY_ERROR);
+}
+
 $id = required_param('id', PARAM_INT);
 
 // Maybe add courseid as optional param?

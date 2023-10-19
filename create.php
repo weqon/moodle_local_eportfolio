@@ -18,6 +18,12 @@ require_once(__DIR__ . '/../../config.php');
 
 require_login();
 
+if (isguestuser()) {
+    redirect(new moodle_url($CFG->wwwroot),
+            get_string('error:noguestaccess', 'local_eportfolio'),
+            null, \core\output\notification::NOTIFY_ERROR);
+}
+
 $url = new moodle_url('/local/eportfolio/create.php');
 $library = optional_param('library', null, PARAM_TEXT);
 

@@ -31,6 +31,12 @@ require_once($CFG->libdir . '/tablelib.php');
 // First check, if user is logged in before accessing this page.
 require_login();
 
+if (isguestuser()) {
+    redirect(new moodle_url($CFG->wwwroot),
+            get_string('error:noguestaccess', 'local_eportfolio'),
+            null, \core\output\notification::NOTIFY_ERROR);
+}
+
 // Params used for deleting, undo sharing & use for selected entry.
 $action = optional_param('action', '', PARAM_ALPHA);
 $id = optional_param('id', 0, PARAM_INT);

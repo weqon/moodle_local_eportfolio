@@ -27,6 +27,8 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'ePortfolio';
 
+$string['error:noguestaccess'] = 'Sie sind als Gast angemeldet. Der Gastzugriff ist für dieses Plugin nicht erlaubt. ';
+
 // Overview.
 $string['overview:header'] = 'ePortfolio - Übersicht';
 
