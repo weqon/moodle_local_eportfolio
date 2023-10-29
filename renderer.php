@@ -293,29 +293,47 @@ function renderer_output_mysharedeportfoliosgrade($tsort = '', $tdir = '') {
 
         foreach ($entries as $ent) {
 
-            // Check, if the course module is still available and visible.
-            $cmid = get_eportfolio_cm($ent['courseid']);
-
-            // Check, if grade exists.
-            $gradeexists = $DB->get_record('eportfolio_grade',
-                    ['courseid' => $ent['courseid'], 'userid' => $ent['userid'], 'itemid' => $ent['fileidcontext'],
-                            'cmid' => $cmid]);
-
-            if ($gradeexists) {
-                $grade = $gradeexists->grade . ' %';
-            } else {
-                $grade = './.';
-            }
-
-            $actions = '';
-
-            $actions .= html_writer::link($ent['fileviewurl'], '', array('class' => 'fa fa-search mr-3',
-                    'title' => get_string('overview:table:actions:view', 'local_eportfolio')));
-
             if (!empty($ent['filenameh5p'])) {
                 $filename = $ent['filenameh5p'] . ' (' . $ent['filename'] . ') ';
             } else {
                 $filename = $ent['filename'];
+            }
+
+            // Check, if the course module is still available and visible.
+            $cmid = get_eportfolio_cm($ent['courseid']);
+
+            if ($cmid) {
+
+                $actions = '';
+
+                // Check, if grade exists.
+                $gradeexists = $DB->get_record('eportfolio_grade',
+                        ['courseid' => $ent['courseid'], 'userid' => $ent['userid'], 'itemid' => $ent['fileidcontext'],
+                                'cmid' => $cmid]);
+
+                if ($gradeexists) {
+                    $grade = $gradeexists->grade . ' %';
+
+                    // Add additional info icon for showing feedbacktext.
+                    $gradefeedback =
+                            html_writer::tag('i', '', array('class' => 'fa fa-info-circle ml-3', 'data-toggle' => 'tooltip',
+                                    'data-placement' => 'bottom', 'title' => format_string($gradeexists->feedbacktext)));
+
+                    $grade .= $gradefeedback;
+
+                    // Add view icon for students.
+                    $viewurl = new moodle_url($CFG->wwwroot . '/mod/eportfolio/view.php', ['id' => $cmid,
+                            'fileid' => $ent['fileidcontext'], 'userid' => $ent['userid'], 'action' => 'view']);
+
+                    $actions .= html_writer::link($viewurl, '', array('class' => 'fa fa-table mr-3',
+                            'title' => get_string('overview:table:actions:viewgradeform', 'local_eportfolio')));
+
+                    $actions .= html_writer::link($ent['fileviewurl'], '', array('class' => 'fa fa-search mr-3',
+                            'title' => get_string('overview:table:actions:view', 'local_eportfolio')));
+
+                } else {
+                    $grade = './.';
+                }
             }
 
             $table->add_data(
