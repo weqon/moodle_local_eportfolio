@@ -493,7 +493,7 @@ function get_h5p_title($pathnamehash) {
     }
 }
 
-// Get course, enrolled users and course groups for sharing form.
+// Get enrolled users for sharing form.
 function get_course_user_to_share($courseid) {
     global $USER;
 
@@ -513,6 +513,7 @@ function get_course_user_to_share($courseid) {
     return $returnusers;
 }
 
+// Get course roles for sharing form.
 function get_course_roles_to_share($courseid) {
     global $DB;
 
@@ -538,6 +539,7 @@ function get_course_roles_to_share($courseid) {
     return $returnroles;
 }
 
+// Get course groups for sharing form.
 function get_course_groups_to_share($courseid) {
 
     // Get course groups by course id.

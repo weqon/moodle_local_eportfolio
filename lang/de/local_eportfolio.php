@@ -68,6 +68,9 @@ $string['overview:table:participants'] = 'Geteilt mit';
 $string['overview:table:sharestart'] = 'Geteilt am';
 $string['overview:table:shareend'] = 'Geteilt bis';
 $string['overview:table:grading'] = 'Bewertung';
+$string['overview:table:graded'] = 'Bewertet?';
+$string['overview:table:graded:pending'] = 'Ausstehend';
+$string['overview:table:graded:done'] = 'Erledigt';
 $string['overview:table:istemplate'] = 'Diese Datei wurde für andere Nutzer:innen als Vorlage zur Verfügung gestellt.';
 
 $string['overview:eportfolio:fileselect'] = 'Dateiauswahl';
@@ -102,14 +105,15 @@ $string['view:eportfolio:timemodified'] = 'Aktualisiert am';
 $string['sharing:header'] = 'ePortfolio teilen';
 $string['sharing:form:step:nocourseselection'] = 'Aktuell ist noch kein Kurs zum Teilen Ihres ePortfolios verfügbar.';
 $string['sharing:form:step:courseselection'] = 'Kurs auswählen';
+$string['sharing:form:step:shareoptionselection'] = 'Art der Teilung';
 $string['sharing:form:select:hint'] = 'Bitte einen Kurs auswählen';
-$string['sharing:form:step:additionalinfo'] = 'Weitere Einstellungen';
+$string['sharing:form:step:userselection'] = 'Teilnehmer/innen auswählen';
 $string['sharing:form:step:confirm'] = 'ePortfolio teilen';
 $string['sharing:form:courseselection'] = 'Kurs zum Teilen auswählen';
+$string['sharing:form:shareoptionselection'] = 'Art der Teilung auswählen';
 $string['sharing:form:sharedcourses'] = 'Kurs auswählen';
 $string['sharing:form:select:allcourses'] = 'Alle Kurse';
 $string['sharing:form:select:singlecourse'] = 'Kurs auswählen';
-$string['sharing:form:additionalinfo'] = 'Weitere Einstellungen';
 $string['sharing:form:shareoption'] = 'Typ';
 $string['sharing:form:shareoption_help'] = 'Zur Ansicht:<br>
 Teilnehmende im Kurs können das ePortfolio anschauen.<br><br>

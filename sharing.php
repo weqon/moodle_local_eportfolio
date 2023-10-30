@@ -116,28 +116,71 @@ if ($step == '1') {
 
     } else if ($formdata2 = $mform2->get_data()) {
 
+        save_to_session('shareoption', $formdata2->shareoption);
+
+        if($formdata2->shareend) {
+            save_to_session('shareend', $formdata2->shareend);
+        }
+
+        if($formdata2->cmid) {
+            save_to_session('cmid', $formdata2->cmid);
+        }
+
+        save_to_session('step', '2');
+
+        redirect(new moodle_url('/local/eportfolio/sharing.php', ['id' => $id]));
+
+    } else {
+
+        $mform2->display();
+
+    }
+}
+
+if ($step == '2') {
+
+    $sharedcourse = load_from_session('sharedcourse', 0);
+    $shareoption = load_from_session('shareoption', 0);
+    $shareend = load_from_session('shareend', 0);
+    $cmid = load_from_session('cmid', 0);
+    $id = load_from_session('id', 0);
+
+    $customdata = array(
+            'sharedcourse' => $sharedcourse,
+            'shareoption' => $shareoption,
+    );
+
+    $mform3 = new sharing_form_3($url, $customdata);
+
+    if ($formdata3 = $mform3->is_cancelled()) {
+
+        reset_session_data();
+        redirect(new moodle_url('/local/eportfolio/index.php'));
+
+    } else if ($formdata3 = $mform3->get_data()) {
+
         $data = new stdClass();
 
         $data->userid = $USER->id;
         $data->courseid = load_from_session('sharedcourse', 0);
         $data->cmid = '0';
         $data->fileitemid = $id;
-        $data->shareoption = $formdata2->shareoption;
-        $data->enddate = (isset($formdata2->shareend)) ? $formdata2->shareend : '';
+        $data->shareoption = $shareoption;
+        $data->enddate = (isset($shareend)) ? $shareend : '';
         $data->timecreated = time();
         $data->h5pid = '0'; // Default value.
 
         // Only relevant when ePortfolios is shared for grading.
-        if ($formdata2->shareoption == 'grade') {
-            $data->cmid = $formdata2->cmid;
+        if ($shareoption == 'grade') {
+            $data->cmid = $cmid;
         }
 
         // Let's collect the target groups.
-        $data->fullcourse = ($formdata2->fullcourse == '1') ? $formdata2->fullcourse : '';
+        $data->fullcourse = ($formdata3->fullcourse == '1') ? $formdata3->fullcourse : '';
 
         $roles = array();
 
-        foreach ($formdata2->roles as $key => $value) {
+        foreach ($formdata3->roles as $key => $value) {
             if ($value) {
                 $roles[] = $key;
             }
@@ -146,7 +189,7 @@ if ($step == '1') {
         $data->roles = implode(', ', $roles);
 
         $enrolled = array();
-        foreach ($formdata2->enrolled as $key => $value) {
+        foreach ($formdata3->enrolled as $key => $value) {
             if ($value) {
                 $enrolled[] = $key;
             }
@@ -155,7 +198,7 @@ if ($step == '1') {
         $data->enrolled = implode(', ', $enrolled);
 
         $groups = array();
-        foreach ($formdata2->groups as $key => $value) {
+        foreach ($formdata3->groups as $key => $value) {
             if ($value) {
                 $groups[] = $key;
             }
@@ -249,7 +292,7 @@ if ($step == '1') {
 
     } else {
 
-        $mform2->display();
+        $mform3->display();
 
     }
 }

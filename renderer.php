@@ -299,12 +299,12 @@ function renderer_output_mysharedeportfoliosgrade($tsort = '', $tdir = '') {
                 $filename = $ent['filename'];
             }
 
-            // Check, if the course module is still available and visible.
+            $actions = '';
+
+            // Get course module id.
             $cmid = get_eportfolio_cm($ent['courseid']);
 
             if ($cmid) {
-
-                $actions = '';
 
                 // Check, if grade exists.
                 $gradeexists = $DB->get_record('eportfolio_grade',
@@ -328,13 +328,13 @@ function renderer_output_mysharedeportfoliosgrade($tsort = '', $tdir = '') {
                     $actions .= html_writer::link($viewurl, '', array('class' => 'fa fa-table mr-3',
                             'title' => get_string('overview:table:actions:viewgradeform', 'local_eportfolio')));
 
-                    $actions .= html_writer::link($ent['fileviewurl'], '', array('class' => 'fa fa-search mr-3',
-                            'title' => get_string('overview:table:actions:view', 'local_eportfolio')));
-
                 } else {
                     $grade = './.';
                 }
             }
+
+            $actions .= html_writer::link($ent['fileviewurl'], '', array('class' => 'fa fa-search mr-3',
+                    'title' => get_string('overview:table:actions:view', 'local_eportfolio')));
 
             $table->add_data(
                     array(
@@ -445,6 +445,7 @@ function renderer_output_sharedeportfolios($tsort = '', $tdir = '') {
 }
 
 function renderer_output_sharedeportfoliosgrade($tsort = '', $tdir = '') {
+    global $DB;
 
     $url = new moodle_url('/local/eportfolio/index.php');
 
@@ -463,6 +464,7 @@ function renderer_output_sharedeportfoliosgrade($tsort = '', $tdir = '') {
                 'sharedby',
                 'coursefullname',
                 'sharestart',
+                'graded',
                 'actions',
         ));
         $table->define_headers(array(
@@ -470,6 +472,7 @@ function renderer_output_sharedeportfoliosgrade($tsort = '', $tdir = '') {
                 get_string('overview:table:sharedby', 'local_eportfolio'),
                 get_string('overview:table:coursefullname', 'local_eportfolio'),
                 get_string('overview:table:sharestart', 'local_eportfolio'),
+                get_string('overview:table:graded', 'local_eportfolio'),
                 get_string('overview:table:actions', 'local_eportfolio'),
         ));
         $table->define_baseurl($url);
@@ -487,6 +490,22 @@ function renderer_output_sharedeportfoliosgrade($tsort = '', $tdir = '') {
             $cmid = get_eportfolio_cm($ent['courseid']);
 
             if ($cmid) {
+
+                // Check, if grade exists.
+                $gradeexists = $DB->get_record('eportfolio_grade',
+                        ['courseid' => $ent['courseid'], 'userid' => $ent['userid'], 'itemid' => $ent['fileidcontext'],
+                                'cmid' => $cmid]);
+
+                if ($gradeexists) {
+                    $graded = html_writer::tag('i', '', array('class' => 'fa fa-check text-success mr-2',
+                            'title' => get_string('overview:table:graded', 'local_eportfolio')));
+                    $graded .= get_string('overview:table:graded:done', 'local_eportfolio');
+                } else {
+                    $graded = html_writer::tag('i', '', array('class' => 'fa fa-clock-o text-danger mr-2',
+                            'title' => get_string('overview:table:graded', 'local_eportfolio')));
+                    $graded .= get_string('overview:table:graded:pending', 'local_eportfolio');
+                }
+
                 $viewurl = new moodle_url($CFG->wwwroot . '/mod/eportfolio/view.php', ['id' => $cmid,
                         'fileid' => $ent['fileitemid'], 'userid' => $ent['userid'], 'action' => 'grade']);
 
@@ -512,6 +531,7 @@ function renderer_output_sharedeportfoliosgrade($tsort = '', $tdir = '') {
                             html_writer::link($ent['courseurl'], $ent['coursename'],
                                     array('title' => get_string('overview:table:viewcourse', 'local_eportfolio'))),
                             $ent['sharestart'],
+                            $graded,
                             $actions,
                     )
             );

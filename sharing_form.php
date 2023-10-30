@@ -40,10 +40,14 @@ class sharing_form_1 extends moodleform {
         $mform->addElement('html', '<span class="fa fa-arrow-right mx-3"></span>');
         $mform->addElement('html',
                 '<span class="badge badge-pill badge-default mr-2 mt-4 mb-5" style="padding: 15px; font-size: 1rem;">2. </span>' .
-                get_string('sharing:form:step:additionalinfo', 'local_eportfolio'));
+                get_string('sharing:form:step:shareoptionselection', 'local_eportfolio'));
         $mform->addElement('html', '<span class="fa fa-arrow-right mx-3"></span>');
         $mform->addElement('html',
                 '<span class="badge badge-pill badge-default mr-2 mt-4 mb-5" style="padding: 15px; font-size: 1rem;">3. </span>' .
+                get_string('sharing:form:step:userselection', 'local_eportfolio'));
+        $mform->addElement('html', '<span class="fa fa-arrow-right mx-3"></span>');
+        $mform->addElement('html',
+                '<span class="badge badge-pill badge-default mr-2 mt-4 mb-5" style="padding: 15px; font-size: 1rem;">4. </span>' .
                 get_string('sharing:form:step:confirm', 'local_eportfolio'));
 
         // Course selection.
@@ -96,17 +100,19 @@ class sharing_form_2 extends moodleform {
         $mform->addElement('html', '<span class="fa fa-arrow-right mx-3"></span>');
         $mform->addElement('html',
                 '<span class="badge badge-pill badge-primary mr-2 mt-4 mb-5" style="padding: 15px; font-size: 1rem;">2. </span>' .
-                get_string('sharing:form:step:additionalinfo', 'local_eportfolio'));
+                get_string('sharing:form:step:shareoptionselection', 'local_eportfolio'));
         $mform->addElement('html', '<span class="fa fa-arrow-right mx-3"></span>');
         $mform->addElement('html',
                 '<span class="badge badge-pill badge-default mr-2 mt-4 mb-5" style="padding: 15px; font-size: 1rem;">3. </span>' .
+                get_string('sharing:form:step:userselection', 'local_eportfolio'));
+        $mform->addElement('html', '<span class="fa fa-arrow-right mx-3"></span>');
+        $mform->addElement('html',
+                '<span class="badge badge-pill badge-default mr-2 mt-4 mb-5" style="padding: 15px; font-size: 1rem;">4. </span>' .
                 get_string('sharing:form:step:confirm', 'local_eportfolio'));
 
-        $mform->addElement('html', '<hr><hr>');
-
         // Add additional infos.
-        $mform->addElement('header', 'additionalinfo', get_string('sharing:form:additionalinfo', 'local_eportfolio'));
-        $mform->setExpanded('additionalinfo');
+        $mform->addElement('header', 'shareoptionselection', get_string('sharing:form:shareoptionselection', 'local_eportfolio'));
+        $mform->setExpanded('shareoptionselection');
 
         // Add select to choose sharing or grading.
         // Before we add "grade" as an option, check if the activity is available and enabled.
@@ -142,15 +148,55 @@ class sharing_form_2 extends moodleform {
                 ['optional' => true]);
         $mform->addHelpButton('shareend', 'sharing:form:enddate', 'local_eportfolio');
 
+        $mform->hideIf('shareend', 'shareoption', 'eq', 'grade');
+
+        // Add standard buttons.
+        $this->add_action_buttons();
+
+    }
+
+}
+
+class sharing_form_3 extends moodleform {
+
+    public function definition() {
+
+        $mform = $this->_form; // Don't forget the underscore!
+
+        $sharedcourseid = $this->_customdata['sharedcourse'];
+        $shareoption = $this->_customdata['shareoption'];
+
+        $mform->addElement('html',
+                '<span class="badge badge-pill badge-default mr-2 mt-4 mb-5" style="padding: 15px; font-size: 1rem;">1. </span>' .
+                get_string('sharing:form:step:courseselection', 'local_eportfolio'));
+        $mform->addElement('html', '<span class="fa fa-arrow-right mx-3"></span>');
+        $mform->addElement('html',
+                '<span class="badge badge-pill badge-default mr-2 mt-4 mb-5" style="padding: 15px; font-size: 1rem;">2. </span>' .
+                get_string('sharing:form:step:shareoptionselection', 'local_eportfolio'));
+        $mform->addElement('html', '<span class="fa fa-arrow-right mx-3"></span>');
+        $mform->addElement('html',
+                '<span class="badge badge-pill badge-primary mr-2 mt-4 mb-5" style="padding: 15px; font-size: 1rem;">3. </span>' .
+                get_string('sharing:form:step:userselection', 'local_eportfolio'));
+        $mform->addElement('html', '<span class="fa fa-arrow-right mx-3"></span>');
+        $mform->addElement('html',
+                '<span class="badge badge-pill badge-default mr-2 mt-4 mb-5" style="padding: 15px; font-size: 1rem;">4. </span>' .
+                get_string('sharing:form:step:confirm', 'local_eportfolio'));
+
         // Select complete course, users, groups or roles to share with.
         $mform->addElement('header', 'sharedusers', get_string('sharing:form:sharedusers', 'local_eportfolio'));
         $mform->setExpanded('sharedusers');
 
         $selectcourse = array(
-                '0' => get_string('sharing:form:select:pleaseselect', 'local_eportfolio'),
-                '1' => get_string('sharing:form:select:fullcourse', 'local_eportfolio'),
-                '2' => get_string('sharing:form:select:targetgroup', 'local_eportfolio')
+                '0' => get_string('sharing:form:select:pleaseselect', 'local_eportfolio')
         );
+
+        // Maybe there is a better option, but for now it's working.
+        if ($shareoption == 'grade') {
+            $selectcourse['2'] = get_string('sharing:form:select:targetgroup', 'local_eportfolio');
+        } else {
+            $selectcourse['1'] = get_string('sharing:form:select:fullcourse', 'local_eportfolio');
+            $selectcourse['2'] = get_string('sharing:form:select:targetgroup', 'local_eportfolio');
+        }
 
         // Add select to share with complete course.
         $mform->addElement('select', 'fullcourse', get_string('sharing:form:fullcourse', 'local_eportfolio'),
@@ -165,8 +211,13 @@ class sharing_form_2 extends moodleform {
         if ($courseroles) {
             $roles = array();
             foreach ($courseroles as $key => $value) {
-                $roles[] = &$mform->createElement('advcheckbox', $key, '', $value, array('name' => $key, 'group' => 1), $key);
-                $mform->setDefault("roles[$key]", false);
+                if ($shareoption != 'grade') {
+                    $roles[] = &$mform->createElement('advcheckbox', $key, '', $value, array('name' => $key, 'group' => 1), $key);
+                    $mform->setDefault("roles[$key]", false);
+                } else if ($key == '3') {
+                    $roles[] = &$mform->createElement('advcheckbox', $key, '', $value, array('name' => $key, 'group' => 1), $key);
+                    $mform->setDefault("roles[$key]", false);
+                }
             }
             $mform->addGroup($roles, 'roles', get_string('sharing:form:roles', 'local_eportfolio'));
             $this->add_checkbox_controller(1, ' ');
@@ -176,32 +227,44 @@ class sharing_form_2 extends moodleform {
         // Get enrolled users.
         $enrolledusers = get_course_user_to_share($sharedcourseid);
 
+        // Get course context.
+        $coursecontext = context_course::instance($sharedcourseid);
+
         if ($enrolledusers) {
             $enrolled = array();
             foreach ($enrolledusers as $key => $value) {
-                $enrolled[] = &$mform->createElement('advcheckbox', $key, '', $value, array('name' => $key, 'group' => 2), $key);
-                $mform->setDefault("enrolled[$key]", false);
+                if ($shareoption != 'grade') {
+                    $enrolled[] = &$mform->createElement('advcheckbox', $key, '', $value,
+                            array('name' => $key, 'group' => 2), $key);
+                    $mform->setDefault("enrolled[$key]", false);
+                } else if (has_capability('mod/eportfolio:grade_eport', $coursecontext, $key)) {
+                    $enrolled[] = &$mform->createElement('advcheckbox', $key, '', $value,
+                            array('name' => $key, 'group' => 2), $key);
+                    $mform->setDefault("enrolled[$key]", false);
+                }
             }
             $mform->addGroup($enrolled, 'enrolled', get_string('sharing:form:enrolledusers', 'local_eportfolio'));
             $this->add_checkbox_controller(2, ' ');
             $mform->addHelpButton('enrolled', 'sharing:form:enrolledusers', 'local_eportfolio');
         }
 
-        // Get available course groups.
-        $coursegroups = get_course_groups_to_share($sharedcourseid);
+        // Get available course groups only if it's not shared for grading.
+        if ($shareoption != 'grade') {
+            $coursegroups = get_course_groups_to_share($sharedcourseid);
 
-        if ($coursegroups) {
-            $groups = array();
-            foreach ($coursegroups as $key => $value) {
-                $groups[] = &$mform->createElement('advcheckbox', $key, '', $value, array('name' => $key, 'group' => 3), $key);
-                $mform->setDefault("groups[$key]", false);
+            if ($coursegroups) {
+                $groups = array();
+                foreach ($coursegroups as $key => $value) {
+                    $groups[] = &$mform->createElement('advcheckbox', $key, '', $value, array('name' => $key, 'group' => 3), $key);
+                    $mform->setDefault("groups[$key]", false);
+                }
+                $mform->addGroup($groups, 'groups', get_string('sharing:form:groups', 'local_eportfolio'));
+                $this->add_checkbox_controller(3, ' ');
+                $mform->addHelpButton('groups', 'sharing:form:groups', 'local_eportfolio');
             }
-            $mform->addGroup($groups, 'groups', get_string('sharing:form:groups', 'local_eportfolio'));
-            $this->add_checkbox_controller(3, ' ');
-            $mform->addHelpButton('groups', 'sharing:form:groups', 'local_eportfolio');
         }
 
-        // Funny, that this is working...
+        // Disable checkboxes in case fullcourse is selected for sharing.
         $mform->hideIf('roles', 'fullcourse', 'eq', '0');
         $mform->hideIf('enrolled', 'fullcourse', 'eq', '0');
         $mform->hideIf('groups', 'fullcourse', 'eq', '0');
@@ -209,8 +272,6 @@ class sharing_form_2 extends moodleform {
         $mform->hideIf('roles', 'fullcourse', 'eq', '1');
         $mform->hideIf('enrolled', 'fullcourse', 'eq', '1');
         $mform->hideIf('groups', 'fullcourse', 'eq', '1');
-
-        $mform->hideIf('shareend', 'shareoption', 'eq', 'grade');
 
         // Add standard buttons.
         $this->add_action_buttons();

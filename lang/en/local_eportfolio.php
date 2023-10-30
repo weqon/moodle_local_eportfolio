@@ -68,6 +68,9 @@ $string['overview:table:participants'] = 'Shared with';
 $string['overview:table:sharestart'] = 'Shared on';
 $string['overview:table:shareend'] = 'Shared until';
 $string['overview:table:grading'] = 'Grade';
+$string['overview:table:graded'] = 'Graded?';
+$string['overview:table:graded:pending'] = 'Pending';
+$string['overview:table:graded:done'] = 'Done';
 $string['overview:table:istemplate'] = 'This file was uploaded or shared as template for other users.';
 
 $string['overview:eportfolio:fileselect'] = 'File selection';
@@ -100,14 +103,15 @@ $string['view:eportfolio:timemodified'] = 'Last modified';
 $string['sharing:header'] = 'Share ePortfolio';
 $string['sharing:form:step:nocourseselection'] = 'Currently there is no course available to share your ePortfolio.';
 $string['sharing:form:step:courseselection'] = 'Select course';
+$string['sharing:form:step:shareoptionselection'] = 'Select share option';
 $string['sharing:form:select:hint'] = 'Please select a course';
-$string['sharing:form:step:additionalinfo'] = 'Additional settings';
+$string['sharing:form:step:userselection'] = 'Select participants';
 $string['sharing:form:step:confirm'] = 'Share ePortfolio';
 $string['sharing:form:courseselection'] = 'Select a course to share';
+$string['sharing:form:shareoptionselection'] = 'Select a sharing type';
 $string['sharing:form:sharedcourses'] = 'Select course';
 $string['sharing:form:select:allcourses'] = 'All courses';
 $string['sharing:form:select:singlecourse'] = 'Select course';
-$string['sharing:form:additionalinfo'] = 'Additional settings';
 $string['sharing:form:shareoption'] = 'Type of sharing';
 $string['sharing:form:shareoption_help'] = 'Share:<br>
 Course participants will only be able to view this ePortfolio.<br><br>
